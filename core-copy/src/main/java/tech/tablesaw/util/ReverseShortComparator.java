@@ -19,6 +19,8 @@ import it.unimi.dsi.fastutil.shorts.ShortComparator;
 import javax.annotation.concurrent.Immutable;
 
 /**
+ * 逆向 Short
+ * 型比较器
  * A Comparator for int primitives for sorting in reverse order, using the given comparator
  */
 @Immutable

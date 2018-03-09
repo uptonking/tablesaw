@@ -19,6 +19,8 @@ import it.unimi.dsi.fastutil.ints.IntComparator;
 import javax.annotation.concurrent.Immutable;
 
 /**
+ * 逆向 整型比较器
+ * <p>
  * A Comparator for int primitives for sorting in reverse order, using the given comparator
  */
 @Immutable

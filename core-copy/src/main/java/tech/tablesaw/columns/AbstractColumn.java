@@ -21,6 +21,8 @@ import tech.tablesaw.store.ColumnMetadata;
 import java.util.UUID;
 
 /**
+ * 列 抽象类
+ * <p>
  * Partial implementation of the {@link Column} interface
  */
 public abstract class AbstractColumn implements Column {

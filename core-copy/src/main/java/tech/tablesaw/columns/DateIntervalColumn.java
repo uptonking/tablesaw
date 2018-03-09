@@ -25,14 +25,16 @@ import java.util.List;
 
 
 /**
+ * 日期间隔 抽象类
+ * <p>
  * EXPERIMENTAL
  */
 @Beta
 public abstract class DateIntervalColumn {
 
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
     // Column-wise boolean operations against individual values
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
 
     // boolean comparisons to other intervals
     abstract Selection equals(DateInterval interval);
@@ -65,9 +67,9 @@ public abstract class DateIntervalColumn {
     abstract Selection meets(PackedLocalDate date);
 
 
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
     // Column-wise boolean operations against other columns
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
 
     abstract Selection equals(DateIntervalColumn interval);
 
@@ -102,7 +104,7 @@ public abstract class DateIntervalColumn {
      * /*-------------------------------------------------------
      */
     // reduction methods
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
     abstract int sumDuration();
 
     abstract int maxDuration();
@@ -125,7 +127,7 @@ public abstract class DateIntervalColumn {
 
     /*-------------------------------------------------------*/
     // misc methods
-  /*-------------------------------------------------------*/
+    /*-------------------------------------------------------*/
     abstract List<PackedLocalDate> toDays();
 
 }

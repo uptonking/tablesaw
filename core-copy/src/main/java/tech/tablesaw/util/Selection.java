@@ -19,6 +19,8 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
 import org.roaringbitmap.RoaringBitmap;
 
 /**
+ * 整型选择集 接口
+ * <p>
  * A selection maintains an ordered set of ints that can be used to select rows from a table or column
  */
 public interface Selection extends IntIterable {

@@ -20,6 +20,8 @@ import tech.tablesaw.filtering.LongBiPredicate;
 import tech.tablesaw.filtering.LongPredicate;
 
 /**
+ * long 列 工具类
+ * <p>
  * Pre-made predicates for common integer use cases, and other helpful things
  */
 public interface LongColumnUtils extends Column, LongIterable {

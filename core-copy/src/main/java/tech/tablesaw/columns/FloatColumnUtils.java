@@ -18,6 +18,9 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
 import tech.tablesaw.filtering.FloatBiPredicate;
 import tech.tablesaw.filtering.FloatPredicate;
 
+/**
+ * Float 列 工具类
+ */
 public interface FloatColumnUtils extends Column, IntIterable {
 
     FloatPredicate isZero = i -> i == 0.0f;

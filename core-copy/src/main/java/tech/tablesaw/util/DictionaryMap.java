@@ -23,6 +23,9 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Set;
 
 /**
+ * 字典映射
+ * 支持 k-v 翻转
+ * <p>
  * A map that supports reversible key value pairs of int-String
  */
 public class DictionaryMap {

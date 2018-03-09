@@ -106,8 +106,10 @@ import tech.tablesaw.filtering.times.IsMidnight;
 import tech.tablesaw.filtering.times.IsNoon;
 
 /**
- * A reference to a column that can be used in evaluating query predicates. It is a key part of having a fluent API
- * for querying tables.
+ * 根据列名指向列的工具类
+ * <p>
+ * A reference to a column that can be used in evaluating query predicates.
+ * It is a key part of having a fluent API for querying tables.
  * <p>
  * Basically, it lets you write a query like this:
  * <p>
@@ -182,8 +184,8 @@ public class ColumnReference {
     }
 
     public Filter isNotEqualTo(LocalTime value) {
-      return new TimeNotEqualTo(this, value);
-    }    
+        return new TimeNotEqualTo(this, value);
+    }
 
     public Filter isEqualTo(LocalDate value) {
         return new DateEqualTo(this, value);

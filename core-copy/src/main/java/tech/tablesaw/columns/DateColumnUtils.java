@@ -21,6 +21,9 @@ import tech.tablesaw.filtering.IntPredicate;
 
 import java.time.LocalDate;
 
+/**
+ * 日期列 工具类
+ */
 public interface DateColumnUtils extends Column, Iterable<LocalDate> {
 
     IntPredicate isMissing = i -> i == DateColumn.MISSING_VALUE;

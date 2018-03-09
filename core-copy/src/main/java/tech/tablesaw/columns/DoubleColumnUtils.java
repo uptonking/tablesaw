@@ -18,6 +18,9 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
 import tech.tablesaw.filtering.DoubleBiPredicate;
 import tech.tablesaw.filtering.DoublePredicate;
 
+/**
+ * Double列 工具类
+ */
 public interface DoubleColumnUtils extends Column, IntIterable {
 
     DoublePredicate isZero = i -> i == 0.0f;
@@ -41,7 +44,7 @@ public interface DoubleColumnUtils extends Column, IntIterable {
     DoubleBiPredicate isEqualTo = (valueToTest, valueToCompareAgainst) -> valueToTest == valueToCompareAgainst;
 
     DoubleBiPredicate isNotEqualTo = (valueToTest, valueToCompareAgainst) -> valueToTest != valueToCompareAgainst;
-    
+
     DoublePredicate isMissing = i -> i != i;
 
     DoublePredicate isNotMissing = i -> i == i;

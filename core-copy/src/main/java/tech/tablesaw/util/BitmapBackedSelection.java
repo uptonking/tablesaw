@@ -18,6 +18,9 @@ import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntIterator;
 import org.roaringbitmap.RoaringBitmap;
 
+/**
+ * 基于位映射的选择集
+ */
 public class BitmapBackedSelection implements Selection {
 
     private final RoaringBitmap bitmap;

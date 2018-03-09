@@ -22,6 +22,9 @@ import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * 链式 整型比较器
+ */
 public class IntComparatorChain implements IntComparator, Serializable {
 
     private static final long serialVersionUID = -721644942746081630L;

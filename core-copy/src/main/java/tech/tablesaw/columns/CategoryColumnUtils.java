@@ -21,6 +21,9 @@ import tech.tablesaw.filtering.StringPredicate;
 import tech.tablesaw.mapping.StringMapUtils;
 import tech.tablesaw.util.DictionaryMap;
 
+/**
+ * Category列 工具类
+ */
 public interface CategoryColumnUtils extends Column, StringMapUtils, CategoryReduceUtils, Iterable<String> {
 
     StringPredicate isMissing = i -> i.equals(CategoryColumn.MISSING_VALUE);

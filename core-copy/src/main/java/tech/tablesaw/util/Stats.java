@@ -25,7 +25,7 @@ import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.api.Table;
 
 /**
- *
+ * 某一列数据的描述性统计量bean
  */
 public class Stats {
 
@@ -231,4 +231,5 @@ public class Stats {
 
         return t;
     }
+
 }

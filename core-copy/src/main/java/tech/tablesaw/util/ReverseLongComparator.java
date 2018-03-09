@@ -19,6 +19,8 @@ import it.unimi.dsi.fastutil.longs.LongComparator;
 import javax.annotation.concurrent.Immutable;
 
 /**
+ * 逆向 Long型比较器
+ * <p>
  * A comparator for long primitives for sorting in descending order
  */
 @Immutable

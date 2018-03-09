@@ -18,6 +18,9 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
 import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.filtering.BooleanPredicate;
 
+/**
+ * Boolean列 工具类
+ */
 public interface BooleanColumnUtils extends Column, IntIterable {
 
     BooleanPredicate isMissing = i -> i == Byte.MIN_VALUE;

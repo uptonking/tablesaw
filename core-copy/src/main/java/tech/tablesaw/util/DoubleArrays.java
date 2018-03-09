@@ -21,6 +21,8 @@ import tech.tablesaw.table.TemporaryView;
 import tech.tablesaw.table.ViewGroup;
 
 /**
+ * 二维数组 工具类
+ * <p>
  * Utility functions for creating 2D double arrays from columns and other arrays
  */
 public class DoubleArrays {

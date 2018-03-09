@@ -19,6 +19,9 @@ import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.filtering.ShortBiPredicate;
 import tech.tablesaw.filtering.ShortPredicate;
 
+/**
+ * short 列 工具类
+ */
 public interface ShortColumnUtils extends Column, ShortIterable {
 
     ShortPredicate isZero = i -> i == 0;

@@ -18,7 +18,9 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
 import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.filtering.IntBiPredicate;
 import tech.tablesaw.filtering.IntPredicate;
-
+/**
+ * int 列 工具类
+ */
 public interface IntColumnUtils extends Column, IntIterable {
 
     IntPredicate isZero = i -> i == 0;
