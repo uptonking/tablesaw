@@ -203,7 +203,7 @@ public class CategoryColumn extends AbstractColumn
      * NOTE: Unless you really need a string consider using the column itself for large datasets as it uses much less memory
      * @return values as a list of String.
      */
-    public List<String> toList() {
+    public List<String> asList() {
         List<String> strings = new ArrayList<>();
         for(String category : this) {
             strings.add(category);
@@ -212,7 +212,7 @@ public class CategoryColumn extends AbstractColumn
     }
 
     @Override
-    public int[] toIntArray() {
+    public int[] asIntArray() {
       return data().toIntArray();
     }
 
@@ -483,7 +483,7 @@ public class CategoryColumn extends AbstractColumn
     }
 
 
-    public IntColumn toIntColumn() {
+    public IntColumn asIntColumn() {
         IntColumn intColumn = new IntColumn(this.name() + ": codes", size());
         IntArrayList data = data();
         for (int i = 0; i < size(); i++) {
@@ -640,8 +640,7 @@ public class CategoryColumn extends AbstractColumn
     public Selection select(StringPredicate predicate) {
         Selection selection = new BitmapBackedSelection();
         for (int idx = 0; idx < data().size(); idx++) {
-            int next = data().getInt(idx);
-            if (predicate.test(get(next))) {
+            if (predicate.test(get(idx))) {
                 selection.add(idx);
             }
         }
@@ -651,8 +650,7 @@ public class CategoryColumn extends AbstractColumn
     public Selection select(StringBiPredicate predicate, String value) {
         Selection selection = new BitmapBackedSelection();
         for (int idx = 0; idx < data().size(); idx++) {
-            int next = data().getInt(idx);
-            if (predicate.test(get(next), value)) {
+            if (predicate.test(get(idx), value)) {
                 selection.add(idx);
             }
         }
