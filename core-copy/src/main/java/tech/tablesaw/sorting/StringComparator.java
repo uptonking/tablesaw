@@ -14,6 +14,9 @@
 
 package tech.tablesaw.sorting;
 
+/**
+ * 字符串排序工具类 单例
+ */
 public class StringComparator {
 
     private static StringComparator instance = new StringComparator();

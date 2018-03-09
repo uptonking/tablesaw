@@ -44,6 +44,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Double类型 列
+ * <p>
  * A column in a base table that contains double precision floating point values
  */
 public class DoubleColumn extends AbstractColumn implements DoubleIterable, NumericColumn {
@@ -94,7 +96,7 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
     }
 
     public DoubleColumn(String name, double[] arr) {
-      this(name, new DoubleArrayList(arr));
+        this(name, new DoubleArrayList(arr));
     }
 
     private DoubleColumn(String name, DoubleArrayList data) {
@@ -108,7 +110,7 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
     }
 
     protected static boolean isMissing(double value) {
-      return Double.isNaN(value);
+        return Double.isNaN(value);
     }
 
     /**
@@ -328,7 +330,7 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
     }
 
     public Selection isNotEqualTo(double d) {
-      return select(isNotEqualTo, d);
+        return select(isNotEqualTo, d);
     }
 
     public Selection isEqualTo(double d) {
@@ -376,11 +378,11 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
 
     @Override
     public String getString(int row) {
-      double value = data.getDouble(row);
-      if (isMissing(value)) {
-          return null;
-      }
-      return String.valueOf(value);
+        double value = data.getDouble(row);
+        if (isMissing(value)) {
+            return null;
+        }
+        return String.valueOf(value);
     }
 
     @Override
@@ -620,7 +622,7 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(4.0, myColumn.isMissing()); // no more missing values
      */
@@ -835,7 +837,7 @@ public class DoubleColumn extends AbstractColumn implements DoubleIterable, Nume
         DoubleColumn newColumn = new DoubleColumn(name() + "[pctChange]", size());
         newColumn.append(MISSING_VALUE);
         for (int i = 1; i < size(); i++) {
-            newColumn.append(get(i) / get(i-1) - 1);
+            newColumn.append(get(i) / get(i - 1) - 1);
         }
         return newColumn;
     }

@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * 表格持久化时使用的元数据
+ * <p>
  * Data about a specific physical table used in its persistence
  */
 public class TableMetadata {

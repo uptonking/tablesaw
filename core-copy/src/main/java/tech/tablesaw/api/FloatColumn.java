@@ -44,6 +44,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Float类型 列
+ * <p>
  * A column in a base table that contains float values
  */
 public class FloatColumn extends AbstractColumn implements FloatIterable, NumericColumn {
@@ -96,7 +98,7 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
     }
 
     public FloatColumn(String name, float[] arr) {
-      this(name, new FloatArrayList(arr));
+        this(name, new FloatArrayList(arr));
     }
 
     public FloatColumn(String name, FloatArrayList data) {
@@ -110,9 +112,9 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
     }
 
     protected static boolean isMissing(float value) {
-      return Float.isNaN(value);
+        return Float.isNaN(value);
     }
-    
+
     /**
      * Returns a float that is parsed from the given String
      * <p>
@@ -316,9 +318,11 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
     public Selection isNegative() {
         return select(isNegative);
     }
+
     public Selection isPositive() {
         return select(isPositive);
     }
+
     public Selection isNonNegative() {
         return select(isNonNegative);
     }
@@ -344,8 +348,8 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
     }
 
     public Selection isNotEqualTo(float f) {
-      return select(isNotEqualTo, f);
-    }    
+        return select(isNotEqualTo, f);
+    }
 
     public Selection isEqualTo(float f) {
         return select(isEqualTo, f);
@@ -609,7 +613,7 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(4.0f, myColumn.isMissing()); // no more missing values
      */
@@ -810,12 +814,12 @@ public class FloatColumn extends AbstractColumn implements FloatIterable, Numeri
      * Returns a new column with a percent change calculated
      */
     public FloatColumn pctChange() {
-      FloatColumn newColumn = new FloatColumn(name() + "[pctChange]", size());
+        FloatColumn newColumn = new FloatColumn(name() + "[pctChange]", size());
         newColumn.append(MISSING_VALUE);
         for (int i = 1; i < size(); i++) {
-            newColumn.append(get(i) / get(i-1) - 1);
+            newColumn.append(get(i) / get(i - 1) - 1);
         }
         return newColumn;
-    }    
+    }
 
 }

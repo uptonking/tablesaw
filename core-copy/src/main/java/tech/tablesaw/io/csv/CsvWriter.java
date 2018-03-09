@@ -29,6 +29,8 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
 /**
+ * df写入csv
+ * <p>
  * Static utility class that writes tables and individual columns to CSV files
  * <p>
  * TODO(lwhite): Do something with the missing indicator param in write() method
@@ -72,7 +74,7 @@ final public class CsvWriter {
      * @throws IOException if the write fails
      */
     public static void write(Table table, OutputStream stream) throws IOException {
-       write(table, new OutputStreamWriter(stream));    
+        write(table, new OutputStreamWriter(stream));
     }
 
     /**
@@ -81,7 +83,7 @@ final public class CsvWriter {
      * @throws IOException if the write fails
      */
     public static void write(Table table, File file) throws IOException {
-       write(table, new FileWriter(file));    
+        write(table, new FileWriter(file));
     }
 
     /**
@@ -90,7 +92,7 @@ final public class CsvWriter {
      * @throws IOException if the write fails
      */
     public static void write(Table table, String fileName) throws IOException {
-       write(table, new File(fileName));    
+        write(table, new File(fileName));
     }
 
     /**

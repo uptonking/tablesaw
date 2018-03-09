@@ -21,7 +21,9 @@ import java.util.function.Function;
 
 import tech.tablesaw.columns.packeddata.PackedLocalDate;
 
-
+/**
+ * 日期分割 工具类
+ */
 public class SplitUtils {
 
     public static LocalDateSplitter byYear = PackedLocalDate::getYear;

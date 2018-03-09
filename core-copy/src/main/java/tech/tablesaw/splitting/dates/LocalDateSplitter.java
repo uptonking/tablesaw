@@ -14,6 +14,9 @@
 
 package tech.tablesaw.splitting.dates;
 
+/**
+ * 日期分割器 接口
+ */
 public interface LocalDateSplitter {
 
     int split(int packedLocalDate);

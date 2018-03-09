@@ -23,6 +23,8 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 复合过滤器 and 所有过滤器都要返回true
+ * <p>
  * A composite filtering that only returns {@code true} if all component filters return true
  */
 public class AllOf extends CompositeFilter {

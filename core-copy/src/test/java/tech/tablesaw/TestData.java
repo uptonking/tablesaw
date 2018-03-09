@@ -25,10 +25,13 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 /**
+ * tablesaw的测试数据源名称 枚举类
+ * <p>
  * This class setup tablesaw Table from test data sources.
  * It purpose is to make easy for tests or example code get data to work with.
  */
 public enum TestData {
+
     SIMPLE_DATA_WITH_CANONICAL_DATE_FORMAT(new String[]{"Name", "IQ", "City", "DOB"},
             new ColumnType[]{CATEGORY, INTEGER, CATEGORY, LOCAL_DATE},
             "../data/simple-data-with-canonical-date-format.csv"),
@@ -80,8 +83,8 @@ public enum TestData {
         this.columnNames = columnNames;
         try {
             this.table = Table.read().csv(CsvReadOptions
-                .builder(csvSource)
-                .columnTypes(columnTypes));
+                    .builder(csvSource)
+                    .columnTypes(columnTypes));
         } catch (IOException e) {
             throw new IllegalStateException("Unable to read from CSV file", e);
         }

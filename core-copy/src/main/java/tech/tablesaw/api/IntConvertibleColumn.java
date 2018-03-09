@@ -18,12 +18,15 @@ import java.util.Set;
 
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
+/**
+ * 可转换成int的列  接口
+ */
 public interface IntConvertibleColumn {
 
     int[] toIntArray();
 
     default Set<Integer> asIntegerSet() {
-      return new IntOpenHashSet(toIntArray());
+        return new IntOpenHashSet(toIntArray());
     }
 
 }

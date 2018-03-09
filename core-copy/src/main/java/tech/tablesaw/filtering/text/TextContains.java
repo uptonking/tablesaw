@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否包含xx
+ * <p>
  * A filtering that selects cells which contain the given text
  */
 @Immutable

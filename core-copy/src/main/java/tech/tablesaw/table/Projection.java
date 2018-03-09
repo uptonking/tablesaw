@@ -20,6 +20,9 @@ import tech.tablesaw.filtering.Filter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 表格的投影视图
+ * 即查询中返回的列的子集
+ * <p>
  * A table projection, i.e. the subset of columns in a table that should be returned in a query
  */
 public class Projection {
@@ -43,4 +46,5 @@ public class Projection {
         Rows.copyRowsToTable(map, projectedTable, newTable);
         return newTable;
     }
+
 }

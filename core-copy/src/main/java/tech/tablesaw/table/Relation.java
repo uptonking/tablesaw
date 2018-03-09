@@ -34,7 +34,11 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 /**
- * A tabular data structure like a table in a relational database, but not formally implementing the relational algebra
+ * 关系型数据 抽象类
+ * 不包含关系运算
+ * <p>
+ * A tabular data structure like a table in a relational database,
+ * but not formally implementing the relational algebra
  */
 public abstract class Relation {
 
@@ -169,18 +173,18 @@ public abstract class Relation {
 
     @Override
     public String toString() {
-      return "Table " + name() + ": Size = " + rowCount() + " x " + columnCount();
+        return "Table " + name() + ": Size = " + rowCount() + " x " + columnCount();
     }
 
     public String print(int rowLimit) {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      DataFramePrinter printer = new DataFramePrinter(rowLimit, baos);
-      printer.print(this);
-      return new String(baos.toByteArray());
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataFramePrinter printer = new DataFramePrinter(rowLimit, baos);
+        printer.print(this);
+        return new String(baos.toByteArray());
     }
 
     public String print() {
-      return print(20);
+        return print(20);
     }
 
     public Table structure() {

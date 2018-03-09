@@ -16,6 +16,9 @@ package tech.tablesaw.mapping;
 
 import org.apache.commons.math3.stat.StatUtils;
 
+/**
+ * 数值 类型的map函数 接口
+ */
 public class NumericMapUtils {
 
     public double[] normalize(double[] data) {

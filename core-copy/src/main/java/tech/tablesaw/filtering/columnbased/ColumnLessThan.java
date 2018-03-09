@@ -27,6 +27,9 @@ import tech.tablesaw.columns.ColumnReference;
 import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
+/**
+ * 判断列小于 过滤器
+ */
 public class ColumnLessThan extends ColumnFilter {
 
     private final ColumnReference otherColumn;

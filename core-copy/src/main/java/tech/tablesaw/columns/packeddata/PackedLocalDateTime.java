@@ -40,9 +40,14 @@ import java.util.Locale;
  *
  * TODO(lwhite): Handle missing values on non-boolean (predicate) methods
  */
+
 /**
- * A short localdatetime packed into a single long value. The long is comprised of an int for the date and an int
- * for the time
+ * 打包后的时间日期
+ * LocalDateTime打包成long，8个字节= 4 + 4 = 2年 1月 1日 + 1时 1分 2毫秒
+ * 使用char存储毫秒，作为2个字节的无符号整数存储，最大支持 6万毫秒(60*1000)
+ * <p>
+ * A short localdatetime packed into a single long value.
+ * The long is comprised of an int for the date and an int for the time
  * <p>
  * The bytes are packed into the date int as:
  * First two bytes: short (year)
@@ -54,13 +59,14 @@ import java.util.Locale;
  * next byte: minuteOfHour
  * last two bytes (short): millisecond of minute
  * <p>
- * Storing the millisecond of minute in an short requires that we treat the short as if it were unsigned. Unfortunately,
- * Neither Java nor Guava provide unsigned short support so we use char, which is a 16-bit unsigned int to
- * store values of up to 60,000 milliseconds (60 secs * 1000)
+ * Storing the millisecond of minute in an short requires that we treat the short as if it were unsigned.
+ * Unfortunately, Neither Java nor Guava provide unsigned short support so we use char,
+ * which is a 16-bit unsigned int to store values of up to 60,000 milliseconds (60 secs * 1000)
  */
 public class PackedLocalDateTime {
 
-    private PackedLocalDateTime() {}
+    private PackedLocalDateTime() {
+    }
 
     public static byte getDayOfMonth(long date) {
         return (byte) date(date);  // last byte

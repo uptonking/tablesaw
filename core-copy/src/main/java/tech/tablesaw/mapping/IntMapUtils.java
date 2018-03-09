@@ -19,6 +19,9 @@ import tech.tablesaw.api.IntColumn;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.IntColumnUtils;
 
+/**
+ * int 类型的map函数 接口
+ */
 public interface IntMapUtils extends IntColumnUtils {
 
     default IntColumn plus(IntColumn... columns) {

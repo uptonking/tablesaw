@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否以xx结尾
+ * <p>
  * A filtering that selects cells which end with the given text
  */
 @Immutable

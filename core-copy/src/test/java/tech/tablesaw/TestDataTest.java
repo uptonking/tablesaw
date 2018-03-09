@@ -35,7 +35,8 @@ public class TestDataTest {
         assertNotNull("Table available", testData.getTable());
 
         // cheap attempt at testing data integrity
-        assertEquals("Column name count matches column type count", testData.getColumnNames().length,
+        assertEquals("Column name count matches column type count",
+                testData.getColumnNames().length,
                 testData.getColumnTypes().length);
 
         assertNotNull("Data path available", testData.getSource());

@@ -50,6 +50,8 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
+ * 日期类型 列
+ * <p>
  * A column in a base table that contains float values
  */
 public class DateColumn extends AbstractColumn implements DateMapUtils {
@@ -94,14 +96,16 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
      * The formatter chosen to parse dates for this particular column
      */
     private DateTimeFormatter selectedFormatter;
-    
-    /** locale for formater */
+
+    /**
+     * locale for formater
+     */
     private final Locale locale;
 
     public DateColumn(String name) {
         this(name, Locale.getDefault());
     }
-    
+
     public DateColumn(String name, Locale locale) {
         this(name, new IntArrayList(DEFAULT_ARRAY_SIZE), locale);
     }
@@ -111,10 +115,10 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
     }
 
     public DateColumn(String name, List<LocalDate> data) {
-      this(name);
-      for (LocalDate date : data) {
-        append(date);
-      }
+        this(name);
+        for (LocalDate date : data) {
+            append(date);
+        }
     }
 
     private DateColumn(String name, IntArrayList data) {
@@ -293,7 +297,7 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(LocalDate.now(), myColumn.isMissing()); // no more missing values
      */
@@ -359,7 +363,7 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
     /**
      * Returns a CategoryColumn with the year and month from this column concatenated into a String that will sort
      * lexicographically in temporal order.
-     *
+     * <p>
      * This simplifies the production of plots and tables that aggregate values into standard temporal units (e.g.,
      * you want monthly data but your source data is more than a year long and you don't want months from different
      * years aggregated together).
@@ -481,7 +485,7 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
 
     /**
      * Returns a table of dates and the number of observations of those dates
-     * 
+     *
      * @return the summary table
      */
     @Override
@@ -787,13 +791,13 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
     }
 
     public List<LocalDate> asList() {
-      List<LocalDate> dates = new ArrayList<>(size());
-      for (Iterator<LocalDate> iter = iterator(); iter.hasNext();) {
-          dates.add(iter.next());
-      }
-      return dates;
+        List<LocalDate> dates = new ArrayList<>(size());
+        for (Iterator<LocalDate> iter = iterator(); iter.hasNext(); ) {
+            dates.add(iter.next());
+        }
+        return dates;
     }
- 
+
     public Set<LocalDate> asSet() {
         Set<LocalDate> dates = new HashSet<>();
         DateColumn unique = unique();
@@ -828,6 +832,7 @@ public class DateColumn extends AbstractColumn implements DateMapUtils {
 
     /**
      * Returns the contents of the cell at rowNumber as a byte[]
+     *
      * @param rowNumber the number of the row as int
      */
     @Override

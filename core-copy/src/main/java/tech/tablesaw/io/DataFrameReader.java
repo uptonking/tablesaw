@@ -29,46 +29,50 @@ import tech.tablesaw.io.csv.CsvReader;
 import tech.tablesaw.io.html.HtmlTableReader;
 import tech.tablesaw.io.jdbc.SqlResultSetReader;
 
+/**
+ * df读取器
+ * todo 是否设计成工具类
+ */
 public class DataFrameReader {
 
-  public Table csv(String file) throws IOException {
-    return csv(CsvReadOptions.builder(file));
-  }
-
-  public Table csv(String contents, String tableName) {
-    try {
-      return csv(new StringReader(contents), tableName);
-    }  catch (Exception e) {
-      throw new IllegalStateException(e);
+    public Table csv(String file) throws IOException {
+        return csv(CsvReadOptions.builder(file));
     }
-  }
 
-  public Table csv(File file) throws IOException {
-    return csv(CsvReadOptions.builder(file));
-  }
+    public Table csv(String contents, String tableName) {
+        try {
+            return csv(new StringReader(contents), tableName);
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
-  public Table csv(InputStream stream, String tableName) throws IOException {
-    return csv(CsvReadOptions.builder(stream, tableName));
-  }
+    public Table csv(File file) throws IOException {
+        return csv(CsvReadOptions.builder(file));
+    }
 
-  public Table csv(Reader reader, String tableName) throws IOException {
-    return csv(CsvReadOptions.builder(reader, tableName));
-  }
+    public Table csv(InputStream stream, String tableName) throws IOException {
+        return csv(CsvReadOptions.builder(stream, tableName));
+    }
 
-  public Table csv(CsvReadOptionsBuilder options) throws IOException {
-    return csv(options.build());
-  }
+    public Table csv(Reader reader, String tableName) throws IOException {
+        return csv(CsvReadOptions.builder(reader, tableName));
+    }
 
-  public Table csv(CsvReadOptions options) throws IOException {
-    return CsvReader.read(options);
-  }
+    public Table csv(CsvReadOptionsBuilder options) throws IOException {
+        return csv(options.build());
+    }
 
-  public Table db(ResultSet resultSet, String tableName) throws SQLException {
-    return SqlResultSetReader.read(resultSet, tableName);
-  }
+    public Table csv(CsvReadOptions options) throws IOException {
+        return CsvReader.read(options);
+    }
 
-  public Table html(String url) throws IOException {
-    return csv(new HtmlTableReader().tableToCsv(url), url);
-  }
+    public Table db(ResultSet resultSet, String tableName) throws SQLException {
+        return SqlResultSetReader.read(resultSet, tableName);
+    }
+
+    public Table html(String url) throws IOException {
+        return csv(new HtmlTableReader().tableToCsv(url), url);
+    }
 
 }

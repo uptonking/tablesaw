@@ -25,6 +25,9 @@ import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.columns.DateTimeColumnUtils;
 import tech.tablesaw.columns.packeddata.PackedLocalDateTime;
 
+/**
+ * 时间日期类型的map函数 接口
+ */
 public interface DateTimeMapUtils extends DateTimeColumnUtils {
 
     default LongColumn differenceInMilliseconds(DateTimeColumn column2) {

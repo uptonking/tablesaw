@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否等于xx 忽略大小写
+ * <p>
  * A filtering that selects cells whose contents equal the given text ignoring case
  */
 @Immutable

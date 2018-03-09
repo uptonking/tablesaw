@@ -19,6 +19,7 @@ import com.google.common.annotations.Beta;
 import tech.tablesaw.columns.DateIntervalColumn;
 
 /**
+ * 打包后的日期间隔
  * EXPERIMENTAL
  */
 @Beta

@@ -28,6 +28,8 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 /**
+ * 从sql查询结果读取df
+ * <p>
  * Creates a Relation from the result of a SQL query, by passing the jdbc resultset to the constructor
  */
 public class SqlResultSetReader {

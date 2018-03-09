@@ -14,6 +14,9 @@
 
 package tech.tablesaw.sorting;
 
+/**
+ * int型排序工具类 单例
+ */
 public class IntComparisonUtil {
 
     private static IntComparisonUtil instance = new IntComparisonUtil();

@@ -26,6 +26,9 @@ import tech.tablesaw.util.Selection;
 
 
 /**
+ * 针对4字节整型的列的索引
+ * 同时也支持基于integer的其他类型的列，如date, category, time
+ * <p>
  * An index for four-byte integer and integer backed columns (date, category, time)
  */
 public class IntIndex {
@@ -101,7 +104,7 @@ public class IntIndex {
         Selection selection = new BitmapBackedSelection();
         IntArrayList list = index.get(value);
         if (list != null) {
-          addAllToSelection(list, selection);
+            addAllToSelection(list, selection);
         }
         return selection;
     }

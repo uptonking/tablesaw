@@ -11,6 +11,9 @@ import org.jsoup.select.Elements;
 
 import com.opencsv.CSVWriter;
 
+/**
+ * 从html中读取df
+ */
 public class HtmlTableReader {
 
   public String tableToCsv(String url) throws IOException {
@@ -31,7 +34,7 @@ public class HtmlTableReader {
         String[] nextLine = Stream.concat(headerCells.stream(), cells.stream())
             .map(cell -> cell.text()).toArray(size -> new String[size]);
         csvWriter.writeNext(nextLine);
-      }      
+      }
       return stringWriter.toString();
     }
   }

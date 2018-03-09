@@ -23,6 +23,8 @@ import tech.tablesaw.util.BitmapBackedSelection;
 import tech.tablesaw.util.Selection;
 
 /**
+ *针对double类型的列的索引 8个字节
+ * <p>
  * An index for double-precision 64-bit IEEE 754 floating point columns.
  */
 public class DoubleIndex {
@@ -62,7 +64,7 @@ public class DoubleIndex {
         Selection selection = new BitmapBackedSelection();
         IntArrayList list = index.get(value);
         if (list != null) {
-          addAllToSelection(list, selection);
+            addAllToSelection(list, selection);
         }
         return selection;
     }

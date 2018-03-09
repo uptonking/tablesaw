@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串的长度是否都小于length
+ * <p>
  * A filtering that selects cells in which all text is shorter than the given length
  */
 @Immutable

@@ -21,6 +21,8 @@ import tech.tablesaw.api.LongColumn;
 import tech.tablesaw.api.ShortColumn;
 
 /**
+ * 聚合运算函数通用接口
+ * <p>
  * Functions that calculate values over the data of an entire column, such as sum, mean, std. dev, etc.
  * TODO: not sure that this should always return a double
  */

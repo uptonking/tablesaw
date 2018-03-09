@@ -23,8 +23,10 @@ import org.apache.commons.lang3.StringUtils;
 import tech.tablesaw.table.Relation;
 
 /**
+ * df格式化打印
+ * <p>
  * A class that can pretty print a DataFrame to text for visualization in a console
- * 
+ * <p>
  * Based off of https://github.com/zavtech/morpheus-core/blob/master/src/main/java/com/zavtech/morpheus/reference/XDataFramePrinter.java
  * under Apache 2 license
  */
@@ -35,8 +37,9 @@ public class DataFramePrinter {
 
     /**
      * Constructor
-     * @param maxRows   the max rows to print
-     * @param stream    the print stream to write to
+     *
+     * @param maxRows the max rows to print
+     * @param stream  the print stream to write to
      */
     public DataFramePrinter(int maxRows, OutputStream stream) {
         this.maxRows = maxRows;
@@ -45,6 +48,7 @@ public class DataFramePrinter {
 
     /**
      * Prints the specified DataFrame to the stream bound to this printer
+     *
      * @param frame the DataFrame to print
      */
     public void print(Relation frame) {
@@ -54,7 +58,7 @@ public class DataFramePrinter {
             final int[] widths = getWidths(headers, data);
             final String dataTemplate = getDataTemplate(widths);
             final String headerTemplate = getHeaderTemplate(widths, headers);
-            final int totalWidth = IntStream.of(widths).map(w -> w + 5).sum()-1;
+            final int totalWidth = IntStream.of(widths).map(w -> w + 5).sum() - 1;
             final int totalHeight = data.length + 1;
             final StringBuilder text = new StringBuilder(totalWidth * totalHeight);
             text.append(tableName(frame, totalWidth)).append("\n");
@@ -77,18 +81,19 @@ public class DataFramePrinter {
     }
 
     private String tableName(Relation frame, int width) {
-      if (frame.name().length() > width) {
-        return frame.name();
-      }
-      int diff = width - frame.name().length();
-      String result = StringUtils.repeat(" ", diff / 2) + frame.name();
-      return result + StringUtils.repeat(" ", width - result.length());
+        if (frame.name().length() > width) {
+            return frame.name();
+        }
+        int diff = width - frame.name().length();
+        String result = StringUtils.repeat(" ", diff / 2) + frame.name();
+        return result + StringUtils.repeat(" ", width - result.length());
     }
 
     /**
      * Returns the header string tokens for the frame
-     * @param frame     the frame to create header tokens
-     * @return          the header tokens
+     *
+     * @param frame the frame to create header tokens
+     * @return the header tokens
      */
     private String[] getHeaderTokens(Relation frame) {
         final int colCount = frame.columnCount();
@@ -102,8 +107,9 @@ public class DataFramePrinter {
 
     /**
      * Returns the 2-D array of data tokens from the frame specified
-     * @param frame     the DataFrame from which to create 2D array of formatted tokens
-     * @return          the array of data tokens
+     *
+     * @param frame the DataFrame from which to create 2D array of formatted tokens
+     * @return the array of data tokens
      */
     private String[][] getDataTokens(Relation frame) {
         if (frame.rowCount() == 0) return new String[0][0];
@@ -112,27 +118,27 @@ public class DataFramePrinter {
         final int colCount = frame.columnCount();
         final String[][] data = new String[rowCount][colCount];
         if (truncated) {
-          int i;
-          for (i = 0; i < rowCount / 2; i++) {
-            for (int j = 0; j < colCount; j++) {
-                data[i][j] = frame.get(i, j);
+            int i;
+            for (i = 0; i < rowCount / 2; i++) {
+                for (int j = 0; j < colCount; j++) {
+                    data[i][j] = frame.get(i, j);
+                }
             }
-          }
-          for (int j = 0; j < colCount; j++) {
-            data[i][j] = "...";
-          }
-          for (i++; i < rowCount; i++) {
             for (int j = 0; j < colCount; j++) {
-                data[i][j] = frame.get(frame.rowCount() - maxRows + i, j);
+                data[i][j] = "...";
             }
-          }
+            for (i++; i < rowCount; i++) {
+                for (int j = 0; j < colCount; j++) {
+                    data[i][j] = frame.get(frame.rowCount() - maxRows + i, j);
+                }
+            }
         } else {
-          for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < colCount; j++) {
-              String value = frame.get(i, j);
-              data[i][j] = value == null ? "" : value;
+            for (int i = 0; i < rowCount; i++) {
+                for (int j = 0; j < colCount; j++) {
+                    String value = frame.get(i, j);
+                    data[i][j] = value == null ? "" : value;
+                }
             }
-          }
         }
         return data;
     }
@@ -140,9 +146,10 @@ public class DataFramePrinter {
 
     /**
      * Returns the column widths required to print the header and data
-     * @param headers   the headers to print
-     * @param data      the data items to print
-     * @return          the required column widths
+     *
+     * @param headers the headers to print
+     * @param data    the data items to print
+     * @return the required column widths
      */
     private static int[] getWidths(String[] headers, String[][] data) {
         final int[] widths = new int[headers.length];
@@ -162,8 +169,9 @@ public class DataFramePrinter {
 
     /**
      * Returns the header template given the widths specified
-     * @param widths    the token widths
-     * @return          the line format template
+     *
+     * @param widths the token widths
+     * @return the line format template
      */
     private static String getHeaderTemplate(int[] widths, String[] headers) {
         return IntStream.range(0, widths.length).mapToObj(i -> {
@@ -182,8 +190,9 @@ public class DataFramePrinter {
 
     /**
      * Returns the data template given the widths specified
-     * @param widths    the token widths
-     * @return          the line format template
+     *
+     * @param widths the token widths
+     * @return the line format template
      */
     private static String getDataTemplate(int[] widths) {
         return IntStream.range(0, widths.length)
@@ -194,7 +203,8 @@ public class DataFramePrinter {
 
     /**
      * Returns a whitespace string of the length specified
-     * @param length    the length for whitespace
+     *
+     * @param length the length for whitespace
      */
     private static void whitespace(StringBuilder text, int length) {
         IntStream.range(0, length).forEach(i -> text.append(" "));

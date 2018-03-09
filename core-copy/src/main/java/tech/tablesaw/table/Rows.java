@@ -32,6 +32,8 @@ import tech.tablesaw.util.Selection;
 import javax.annotation.concurrent.Immutable;
 
 /**
+ * 多行 工具类
+ * <p>
  * A static utility class for row operations
  */
 @Immutable

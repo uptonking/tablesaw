@@ -19,6 +19,9 @@ import tech.tablesaw.api.LongColumn;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.LongColumnUtils;
 
+/**
+ * long 类型的map函数 接口
+ */
 public interface LongMapUtils extends LongColumnUtils {
 
     default LongColumn plus(LongColumn... columns) {

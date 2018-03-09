@@ -17,6 +17,9 @@ package tech.tablesaw.aggregate;
 import tech.tablesaw.api.Table;
 
 /**
+ * 数值类型摘要表
+ * 是一种特殊的Table，有2列 = 1字符串 + 1数值统计信息
+ * <p>
  * NumericSummaryTable is a standard table, but one with a specific format:
  * It has two columns, the first a category column and the second a numeric column,
  * so that it is appropriate for managing data that summarizes numeric variables by groups

@@ -16,6 +16,9 @@ package tech.tablesaw.aggregate;
 
 import tech.tablesaw.columns.Column;
 
+/**
+ * 字符串规约 接口
+ */
 public interface CategoryReduceUtils extends Column, Iterable<String> {
 
     int size();

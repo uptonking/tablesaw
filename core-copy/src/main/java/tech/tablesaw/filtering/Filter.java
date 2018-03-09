@@ -18,6 +18,8 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 过滤器 抽象类
+ * <p>
  * A predicate applied to a Relation, to return a subset of the rows in that table
  */
 public abstract class Filter {

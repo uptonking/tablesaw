@@ -52,6 +52,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * 时间日期类型 列
+ * <p>
  * A column in a table that contains long-integer encoded (packed) local date-time values
  */
 public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, Iterable<LocalDateTime> {
@@ -118,10 +120,10 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
     }
 
     public DateTimeColumn(String name, List<LocalDateTime> data) {
-      this(name);
-      for (LocalDateTime date : data) {
-        append(date);
-      }
+        this(name);
+        for (LocalDateTime date : data) {
+            append(date);
+        }
     }
 
     @Override
@@ -398,7 +400,7 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
     /**
      * Returns a CategoryColumn with the year and month from this column concatenated into a String that will sort
      * lexicographically in temporal order.
-     *
+     * <p>
      * This simplifies the production of plots and tables that aggregate values into standard temporal units (e.g.,
      * you want monthly data but your source data is more than a year long and you don't want months from different
      * years aggregated together).
@@ -422,7 +424,7 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
     /**
      * Returns a CategoryColumn with the year and day-of-year derived from this column concatenated into a String
      * that will sort lexicographically in temporal order.
-     *
+     * <p>
      * This simplifies the production of plots and tables that aggregate values into standard temporal units (e.g.,
      * you want monthly data but your source data is more than a year long and you don't want months from different
      * years aggregated together).
@@ -446,7 +448,7 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
     /**
      * Returns a CategoryColumn with the year and week-of-year derived from this column concatenated into a String
      * that will sort lexicographically in temporal order.
-     *
+     * <p>
      * This simplifies the production of plots and tables that aggregate values into standard temporal units (e.g.,
      * you want monthly data but your source data is more than a year long and you don't want months from different
      * years aggregated together).
@@ -483,7 +485,7 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(LocalDateTime.now(), myColumn.isMissing()); // no more missing values
      */
@@ -588,15 +590,15 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
      * between the LocalDateTime and midnight, January 1, 1970 UTC.
      */
     public long[] toEpochSecondArray() {
-      return toEpochSecondArray(ZoneOffset.UTC);
+        return toEpochSecondArray(ZoneOffset.UTC);
     }
 
     public long[] toEpochSecondArray(ZoneOffset offset) {
-      long[] output = new long[data.size()];
-      for (int i = 0; i < data.size(); i++) {
-          output[i] = PackedLocalDateTime.asLocalDateTime(data.getLong(i)).toEpochSecond(offset);
-      }
-      return output;
+        long[] output = new long[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            output[i] = PackedLocalDateTime.asLocalDateTime(data.getLong(i)).toEpochSecond(offset);
+        }
+        return output;
     }
 
     /**
@@ -604,15 +606,15 @@ public class DateTimeColumn extends AbstractColumn implements DateTimeMapUtils, 
      * between the LocalDateTime and midnight, January 1, 1970 UTC.
      */
     public long[] toEpochMillisArray() {
-      return toEpochMillisArray(ZoneOffset.UTC);
+        return toEpochMillisArray(ZoneOffset.UTC);
     }
 
     public long[] toEpochMillisArray(ZoneOffset offset) {
-      long[] output = new long[data.size()];
-      for (int i = 0; i < data.size(); i++) {
-          output[i] = PackedLocalDateTime.asLocalDateTime(data.getLong(i)).toInstant(offset).toEpochMilli();
-      }
-      return output;
+        long[] output = new long[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            output[i] = PackedLocalDateTime.asLocalDateTime(data.getLong(i)).toInstant(offset).toEpochMilli();
+        }
+        return output;
     }
 
     public String print() {

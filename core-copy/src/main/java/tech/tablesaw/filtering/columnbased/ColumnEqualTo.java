@@ -33,6 +33,9 @@ import tech.tablesaw.columns.ColumnReference;
 import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
+/**
+ * 判断列相等 过滤器
+ */
 public class ColumnEqualTo extends ColumnFilter {
 
     private final ColumnReference otherColumn;

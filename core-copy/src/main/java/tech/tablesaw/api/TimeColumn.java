@@ -47,6 +47,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * 时间类型 列
  * A column in a base table that contains float values
  */
 public class TimeColumn extends AbstractColumn implements Iterable<LocalTime>, TimeMapUtils {
@@ -110,10 +111,10 @@ public class TimeColumn extends AbstractColumn implements Iterable<LocalTime>, T
     }
 
     public TimeColumn(String name, List<LocalTime> data) {
-      this(name);
-      for (LocalTime time : data) {
-        append(time);
-      }
+        this(name);
+        for (LocalTime time : data) {
+            append(time);
+        }
     }
 
     public int size() {
@@ -314,17 +315,17 @@ public class TimeColumn extends AbstractColumn implements Iterable<LocalTime>, T
     }
 
     public Selection isNotEqualTo(LocalTime value) {
-      Selection results = new BitmapBackedSelection();
-      int packedLocalTime = PackedLocalTime.pack(value);
-      int i = 0;
-      for (int next : data) {
-          if (packedLocalTime != next) {
-              results.add(i);
-          }
-          i++;
-      }
-      return results;
-    }    
+        Selection results = new BitmapBackedSelection();
+        int packedLocalTime = PackedLocalTime.pack(value);
+        int i = 0;
+        for (int next : data) {
+            if (packedLocalTime != next) {
+                results.add(i);
+            }
+            i++;
+        }
+        return results;
+    }
 
     public Selection isEqualTo(LocalTime value) {
         Selection results = new BitmapBackedSelection();
@@ -495,7 +496,7 @@ public class TimeColumn extends AbstractColumn implements Iterable<LocalTime>, T
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(LocalTime.now(), myColumn.isMissing()); // no more missing values
      */

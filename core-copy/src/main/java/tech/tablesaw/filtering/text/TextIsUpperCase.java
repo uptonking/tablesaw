@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否都是大写
+ * <p>
  * A filtering that selects cells in which all text is uppercase
  */
 @Immutable

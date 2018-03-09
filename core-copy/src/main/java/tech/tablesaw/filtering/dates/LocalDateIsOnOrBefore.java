@@ -22,6 +22,9 @@ import tech.tablesaw.columns.ColumnReference;
 import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
+/**
+ * 判断在某日期当天或之前
+ */
 @Immutable
 public class LocalDateIsOnOrBefore extends ColumnFilter {
 

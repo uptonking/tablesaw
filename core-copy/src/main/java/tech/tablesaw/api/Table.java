@@ -65,9 +65,11 @@ import tech.tablesaw.util.ReversingIntComparator;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 表格 数据类型
+ * <p>
  * A table of data, consisting of some number of columns, each of which has the same number of rows.
- * All the data in a column has the same type: integer, float, category, etc., but a table may contain an arbitrary
- * number of columns of any type.
+ * All the data in a column has the same type: integer, float, category, etc.,
+ * but a table may contain an arbitrary number of columns of any type.
  * <p>
  * Tables are the main data-type and primary focus of Tablesaw.
  */
@@ -191,15 +193,15 @@ public class Table extends Relation implements IntIterable {
     }
 
     public DataFrameWriter write() {
-      return new DataFrameWriter(this);
+        return new DataFrameWriter(this);
     }
- 
+
     /**
      * Returns an randomly generated array of ints of size N where Max is the largest possible value
      */
     static int[] generateUniformBitmap(int N, int Max) {
         if (N > Max) {
-          throw new IllegalArgumentException("Illegal arguments: N (" + N + ") greater than Max (" + Max + ")");
+            throw new IllegalArgumentException("Illegal arguments: N (" + N + ") greater than Max (" + Max + ")");
         }
 
         int[] ans = new int[N];
@@ -270,7 +272,7 @@ public class Table extends Relation implements IntIterable {
      * @param colIndex  Zero-based index of the column to be replaced
      * @param newColumn Column to be added
      */
-    public Table replaceColumn(int colIndex, Column newColumn) {       
+    public Table replaceColumn(int colIndex, Column newColumn) {
         removeColumns(column(colIndex));
         addColumn(colIndex, newColumn);
         return this;
@@ -420,16 +422,16 @@ public class Table extends Relation implements IntIterable {
      * Returns a table with the same columns as this table
      */
     public Table fullCopy() {
-      Table copy = new Table(name);
-      for (Column column : columnList) {
-        copy.addColumn(column.emptyCopy());
-      }
+        Table copy = new Table(name);
+        for (Column column : columnList) {
+            copy.addColumn(column.emptyCopy());
+        }
 
-      IntArrayList integers = new IntArrayList();
-      for(int i = 0; i < rowCount(); i++)
-        integers.add(i);
-      Rows.copyRowsToTable(integers,this,copy);
-      return copy;
+        IntArrayList integers = new IntArrayList();
+        for (int i = 0; i < rowCount(); i++)
+            integers.add(i);
+        Rows.copyRowsToTable(integers, this, copy);
+        return copy;
     }
 
     /**
@@ -695,14 +697,14 @@ public class Table extends Relation implements IntIterable {
      * The first stage of a split-apply-combine operation
      */
     public ViewGroup groupBy(String... columns) {
-      return groupBy(columns(columns).toArray(new Column[columns.length]));
+        return groupBy(columns(columns).toArray(new Column[columns.length]));
     }
 
     /**
      * The first stage of a split-apply-combine operation
      */
     public ViewGroup groupBy(Column... columns) {
-      return new ViewGroup(this, columns);
+        return new ViewGroup(this, columns);
     }
 
     /**
@@ -744,84 +746,90 @@ public class Table extends Relation implements IntIterable {
 
     /**
      * Returns a table with the given rows selected
+     *
      * @param row the row to select
      * @return the table with the selected rows
      */
     public Table selectRow(int row) {
-      return selectRows(row, row);
+        return selectRows(row, row);
     }
-    
+
     /**
      * Returns a table with the given rows selected
+     *
      * @param rows the rows to select
      * @return the table with the selected rows
      */
     public Table selectRows(Collection<Integer> rows) {
-      Table newTable = emptyCopy();
-      Rows.copyRowsToTable(new IntArrayList(rows), this, newTable);
-      return newTable;
+        Table newTable = emptyCopy();
+        Rows.copyRowsToTable(new IntArrayList(rows), this, newTable);
+        return newTable;
 
     }
 
     /**
      * Returns a table with the given rows selected
+     *
      * @param start the first row to select
-     * @param end the last row to select
+     * @param end   the last row to select
      * @return the table with the selected rows
      */
     public Table selectRows(int start, int end) {
-      Table newTable = emptyCopy();
-      IntArrayList rowsToKeep = new IntArrayList();
-      for (int i = 0; i < rowCount(); i++) {
-        if (i >= start && i <= end) {
-          rowsToKeep.add(i);
+        Table newTable = emptyCopy();
+        IntArrayList rowsToKeep = new IntArrayList();
+        for (int i = 0; i < rowCount(); i++) {
+            if (i >= start && i <= end) {
+                rowsToKeep.add(i);
+            }
         }
-      }
-      Rows.copyRowsToTable(rowsToKeep, this, newTable);
-      return newTable;
+        Rows.copyRowsToTable(rowsToKeep, this, newTable);
+        return newTable;
     }
 
     /**
      * Returns a table with the given rows dropped
+     *
      * @param row the row to drop
      * @return the table with the dropped rows
      */
     public Table dropRow(int row) {
-      return dropRows(row, row);
+        return dropRows(row, row);
     }
 
     /**
      * Returns a table with the given rows dropped
+     *
      * @param rows the rows to drop
      * @return the table with the dropped rows
      */
     public Table dropRows(Collection<Integer> rows) {
-      Table newTable = emptyCopy();
-      IntArrayList rowsToKeep = new IntArrayList();
-      for (int i = 0; i < rowCount(); i++) {
-        rowsToKeep.add(i);
-      }
-      rowsToKeep.removeAll(new IntArrayList(rows));
-      Rows.copyRowsToTable(rowsToKeep, this, newTable);
-      return newTable;
+        Table newTable = emptyCopy();
+        IntArrayList rowsToKeep = new IntArrayList();
+        for (int i = 0; i < rowCount(); i++) {
+            rowsToKeep.add(i);
+        }
+        rowsToKeep.removeAll(new IntArrayList(rows));
+        Rows.copyRowsToTable(rowsToKeep, this, newTable);
+        return newTable;
     }
 
     /**
      * Returns a table with the given rows dropped
+     *
      * @param start the first row to drop
-     * @param end the last row to drop
+     * @param end   the last row to drop
      * @return the table with the dropped rows
      */
     public Table dropRows(int start, int end) {
-      Table newTable = emptyCopy();
-      IntArrayList rowsToKeep = new IntArrayList();
-      for (int i = 0; i < rowCount(); i++) {
-        if (i < start || i > end) {
-          rowsToKeep.add(i);
+        Table newTable = emptyCopy();
+        IntArrayList rowsToKeep = new IntArrayList();
+        for (int i = 0; i < rowCount(); i++) {
+            if (i < start || i > end) {
+                rowsToKeep.add(i);
+            }
         }
-      }
-      Rows.copyRowsToTable(rowsToKeep, this, newTable);
-      return newTable;
+        Rows.copyRowsToTable(rowsToKeep, this, newTable);
+        return newTable;
     }
 
     /**
@@ -891,15 +899,19 @@ public class Table extends Relation implements IntIterable {
     public SummaryFunction sum(String numericColumnName) {
         return new SummaryFunction(this, numericColumnName, sum);
     }
+
     public SummaryFunction mean(String numericColumnName) {
         return new SummaryFunction(this, numericColumnName, mean);
     }
+
     public SummaryFunction median(String numericColumnName) {
         return new SummaryFunction(this, numericColumnName, median);
     }
+
     public SummaryFunction variance(String numericColumnName) {
         return new SummaryFunction(this, numericColumnName, variance);
     }
+
     public SummaryFunction stdDev(String numericColumnName) {
         return new SummaryFunction(this, numericColumnName, stdDev);
     }
@@ -913,7 +925,7 @@ public class Table extends Relation implements IntIterable {
     }
 
     public SummaryFunction min(String numericColumnName) {
-      return new SummaryFunction(this, numericColumnName, min);
+        return new SummaryFunction(this, numericColumnName, min);
     }
 
     public void append(Table tableToAppend) {
@@ -972,7 +984,7 @@ public class Table extends Relation implements IntIterable {
     }
 
     public DataFrameJoiner join(String columnName) {
-      return new DataFrameJoiner(this, columnName);
+        return new DataFrameJoiner(this, columnName);
     }
 
     @Override

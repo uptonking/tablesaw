@@ -27,6 +27,9 @@ import tech.tablesaw.columns.ColumnReference;
 import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
+/**
+ * 判断列大于 过滤器
+ */
 public class ColumnGreaterThan extends ColumnFilter {
 
     private final ColumnReference otherColumn;

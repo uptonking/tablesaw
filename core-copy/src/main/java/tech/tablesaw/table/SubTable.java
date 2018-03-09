@@ -31,6 +31,9 @@ import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.columns.Column;
 
 /**
+ * 特殊的子表格
+ * 多用于对数据进行分组操作后的结果
+ * <p>
  * A specialization of the standard Relation used for tables formed by grouping operations on a Relation
  */
 public class SubTable extends Table {

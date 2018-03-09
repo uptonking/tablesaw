@@ -63,6 +63,8 @@ import static tech.tablesaw.aggregate.AggregateFunctions.sumOfSquares;
 import static tech.tablesaw.aggregate.AggregateFunctions.variance;
 
 /**
+ * Short类型 列
+ * <p>
  * A column that contains signed 2 byte integer values
  */
 public class ShortColumn extends AbstractColumn implements ShortMapUtils, NumericColumn, IntConvertibleColumn {
@@ -111,7 +113,7 @@ public class ShortColumn extends AbstractColumn implements ShortMapUtils, Numeri
     }
 
     protected static boolean isMissing(short value) {
-      return value == MISSING_VALUE;
+        return value == MISSING_VALUE;
     }
 
     /**
@@ -716,7 +718,7 @@ public class ShortColumn extends AbstractColumn implements ShortMapUtils, Numeri
         FloatColumn newColumn = new FloatColumn(name() + "[pctChange]", size());
         newColumn.append(FloatColumn.MISSING_VALUE);
         for (int i = 1; i < size(); i++) {
-            newColumn.append((float) get(i) / get(i-1) - 1);
+            newColumn.append((float) get(i) / get(i - 1) - 1);
         }
         return newColumn;
     }

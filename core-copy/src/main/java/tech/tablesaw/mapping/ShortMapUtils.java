@@ -20,6 +20,9 @@ import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.columns.Column;
 import tech.tablesaw.columns.ShortColumnUtils;
 
+/**
+ * short 类型的map函数 接口
+ */
 public interface ShortMapUtils extends ShortColumnUtils {
 
     default IntColumn plus(ShortColumn... columns) {

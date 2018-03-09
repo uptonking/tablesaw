@@ -18,6 +18,8 @@ import tech.tablesaw.api.BooleanColumn;
 import tech.tablesaw.columns.Column;
 
 /**
+ * boolean类型的map函数 接口
+ * <p>
  * An interface for mapping operations unique to Boolean columns
  */
 public interface BooleanMapUtils extends Column {

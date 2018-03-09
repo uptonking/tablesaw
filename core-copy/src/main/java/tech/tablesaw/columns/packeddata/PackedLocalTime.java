@@ -20,6 +20,10 @@ import com.google.common.primitives.Ints;
 import java.time.LocalTime;
 
 /**
+ * 打包后的时间
+ * LocalTime打包成int，4个字节 = 1时 + 1分 + 2毫秒
+ * 使用char存储毫秒，作为2个字节的无符号整数存储，最大支持 6万毫秒(60*1000)
+ * <p>
  * A localTime with millisecond precision packed into a single int value.
  * <p>
  * The bytes are packed into the int as:
@@ -27,9 +31,9 @@ import java.time.LocalTime;
  * next byte: minuteOfHour
  * last two bytes (short): millisecond of minute
  * <p>
- * Storing the millisecond of minute in an short requires that we treat the short as if it were unsigned. Unfortunately,
- * Neither Java nor Guava provide unsigned short support so we use char, which is a 16-bit unsigned int to
- * store values of up to 60,000 milliseconds (60 secs * 1000)
+ * Storing the millisecond of minute in an short requires that we treat the short as if it were unsigned.
+ * Unfortunately, Neither Java nor Guava provide unsigned short support so we use char,
+ * which is a 16-bit unsigned int to store values of up to 60,000 milliseconds (60 secs * 1000)
  */
 public class PackedLocalTime {
 

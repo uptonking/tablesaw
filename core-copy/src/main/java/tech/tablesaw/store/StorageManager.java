@@ -62,6 +62,8 @@ import java.util.concurrent.Future;
 import java.util.regex.Pattern;
 
 /**
+ * 用于读写tablesaw自定义压缩列式格式.saw文件的工具类
+ * <p>
  * A controller for reading and writing data in Tablesaw's own compressed, column-oriented file format
  */
 public class StorageManager {
@@ -135,7 +137,7 @@ public class StorageManager {
             case FLOAT:
                 return readFloatColumn(fileName, columnMetadata);
             case DOUBLE:
-              return readDoubleColumn(fileName, columnMetadata);
+                return readDoubleColumn(fileName, columnMetadata);
             case INTEGER:
                 return readIntColumn(fileName, columnMetadata);
             case BOOLEAN:
@@ -176,7 +178,7 @@ public class StorageManager {
     }
 
     private static DoubleColumn readDoubleColumn(String fileName, ColumnMetadata metadata) throws IOException {
-      DoubleColumn doubles = new DoubleColumn(metadata);
+        DoubleColumn doubles = new DoubleColumn(metadata);
         try (FileInputStream fis = new FileInputStream(fileName);
              SnappyFramedInputStream sis = new SnappyFramedInputStream(fis, true);
              DataInputStream dis = new DataInputStream(sis)) {

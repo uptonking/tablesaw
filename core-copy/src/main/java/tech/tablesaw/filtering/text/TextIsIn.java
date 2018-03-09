@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否在所给字符串数组中
+ * <p>
  * A filtering that selects cells in which the string value is in the given array of strings
  */
 @Immutable

@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否以xx开头
+ * <p>
  * A filtering that selects cells which start with the given string
  */
 @Immutable

@@ -25,7 +25,11 @@ import java.time.chrono.IsoChronology;
 import java.util.Date;
 
 /**
- * A short localdate packed into a single int value. It uses a short for year so the range is about +-30,000 years
+ * 打包后的日期
+ * LocalDate打包成int， 4个字节 = 2年 + 1月 + 1日
+ * <p>
+ * A short localdate packed into a single int value.
+ * It uses a short for year so the range is about +-30,000 years
  * <p>
  * The bytes are packed into the int as:
  * First two bytes: short (year)
@@ -74,9 +78,9 @@ public class PackedLocalDate {
 
     public static int pack(LocalDate date) {
         return pack(
-            (short) date.getYear(),
-            (byte) date.getMonthValue(),
-            (byte) date.getDayOfMonth());
+                (short) date.getYear(),
+                (byte) date.getMonthValue(),
+                (byte) date.getDayOfMonth());
     }
 
     public static int pack(Date date) {

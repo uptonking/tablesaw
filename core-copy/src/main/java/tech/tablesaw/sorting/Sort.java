@@ -21,6 +21,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * 可细粒度控制的排序类
+ * <p>
  * Provides fine-grained control over sorting.
  * <p>
  * Use:

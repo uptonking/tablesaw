@@ -15,6 +15,8 @@
 package tech.tablesaw.filtering;
 
 /**
+ * 复合过滤器 抽象类
+ * <p>
  * A superclass for filters that operate on other filters, rather than directly on columns
  */
 abstract class CompositeFilter extends Filter {

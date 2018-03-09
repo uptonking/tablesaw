@@ -17,6 +17,8 @@ package tech.tablesaw.io.csv;
 import java.io.PrintStream;
 
 /**
+ * 添加单元格到列的异常
+ * <p>
  * This Exception wraps another Exception thrown while adding a cell to a column.
  * <p>
  * The methods of this exception allow the causing Exception, row number,

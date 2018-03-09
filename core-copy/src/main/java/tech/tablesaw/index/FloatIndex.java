@@ -23,6 +23,8 @@ import tech.tablesaw.util.BitmapBackedSelection;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 针对float类型的列的索引 4个字节
+ * <p>
  * An index for four-byte floating point columns
  */
 public class FloatIndex {
@@ -62,7 +64,7 @@ public class FloatIndex {
         Selection selection = new BitmapBackedSelection();
         IntArrayList list = index.get(value);
         if (list != null) {
-          addAllToSelection(list, selection);
+            addAllToSelection(list, selection);
         }
         return selection;
     }

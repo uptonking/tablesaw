@@ -34,6 +34,8 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
 /**
+ * Date类型的map函数 接口
+ *
  * An interface for mapping operations unique to Date columns
  */
 public interface DateMapUtils extends DateColumnUtils {

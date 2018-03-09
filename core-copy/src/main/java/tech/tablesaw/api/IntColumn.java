@@ -44,6 +44,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * int类型 列
+ * <p>
  * A column that contains signed 4 byte integer values
  */
 public class IntColumn extends AbstractColumn implements IntMapUtils, NumericColumn, IntConvertibleColumn {
@@ -68,7 +70,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     };
 
     public IntColumn(String name) {
-      this(name, new IntArrayList(DEFAULT_ARRAY_SIZE));
+        this(name, new IntArrayList(DEFAULT_ARRAY_SIZE));
     }
 
     public IntColumn(String name, int initialSize) {
@@ -81,7 +83,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     }
 
     public IntColumn(String name, int[] arr) {
-      this(name, new IntArrayList(arr));
+        this(name, new IntArrayList(arr));
     }
 
     public IntColumn(ColumnMetadata metadata) {
@@ -90,7 +92,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     }
 
     protected static boolean isMissing(int value) {
-      return value == MISSING_VALUE;
+        return value == MISSING_VALUE;
     }
 
     /**
@@ -130,7 +132,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(4, myColumn.isMissing()); // no more missing values
      */
@@ -157,7 +159,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     }
 
     public Selection isNotEqualTo(int i) {
-      return select(isNotEqualTo, i);
+        return select(isNotEqualTo, i);
     }
 
     public Selection isEqualTo(int i) {
@@ -172,7 +174,7 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
         return select(isNotMissing);
     }
 
-    public Selection isIn(int ... values) {
+    public Selection isIn(int... values) {
         Selection bitmap = new BitmapBackedSelection();
         for (int idx = 0; idx < data.size(); idx++) {
             int next = data.getInt(idx);
@@ -269,9 +271,9 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
     public String getString(int row) {
         int value = data.getInt(row);
         if (value == MISSING_VALUE) {
-          return null;
-      }
-      return String.valueOf(value);
+            return null;
+        }
+        return String.valueOf(value);
     }
 
     @Override
@@ -737,9 +739,9 @@ public class IntColumn extends AbstractColumn implements IntMapUtils, NumericCol
         DoubleColumn newColumn = new DoubleColumn(name() + "[pctChange]", size());
         newColumn.append(DoubleColumn.MISSING_VALUE);
         for (int i = 1; i < size(); i++) {
-            newColumn.append((double) get(i) / get(i-1) - 1);
+            newColumn.append((double) get(i) / get(i - 1) - 1);
         }
         return newColumn;
-    }  
+    }
 
 }

@@ -29,6 +29,9 @@ import tech.tablesaw.api.LongColumn;
 import tech.tablesaw.api.ShortColumn;
 
 /**
+ * 聚合运算函数 工具类
+ * 全是静态方法
+ * <p>
  * Contains common utilities for double and long types
  */
 public class AggregateFunctions {
@@ -49,7 +52,7 @@ public class AggregateFunctions {
         public double agg(double[] data) {
             return data.length == 0 ? Float.NaN : data[0];
         }
-    };  
+    };
 
     /**
      * A function that returns the last item
@@ -63,7 +66,7 @@ public class AggregateFunctions {
 
         @Override
         public double agg(double[] data) {
-            return data.length == 0 ? Float.NaN : data[data.length-1];
+            return data.length == 0 ? Float.NaN : data[data.length - 1];
         }
     };
 
@@ -81,7 +84,7 @@ public class AggregateFunctions {
         public double agg(double[] data) {
             return data.length;
         }
-    };  
+    };
 
     /**
      * A function that calculates the mean of the values in the column param
@@ -472,7 +475,7 @@ public class AggregateFunctions {
     }
 
     private static boolean isNotMissing(double value) {
-        return ! Double.isNaN(value);
+        return !Double.isNaN(value);
     }
 
     // TODO(lwhite): These are two column reductions. We need a class for that

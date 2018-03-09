@@ -27,6 +27,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * 一组表格
+ * <p>
  * A group of tables formed by performing splitting operations on an original table
  */
 public class TableGroup implements Iterable<SubTable> {

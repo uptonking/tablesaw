@@ -61,6 +61,9 @@ import tech.tablesaw.columns.Column;
 import tech.tablesaw.io.TypeUtils;
 import tech.tablesaw.io.UnicodeBOMInputStream;
 
+/**
+ * 从csv读取df
+ */
 @Immutable
 public class CsvReader {
 
@@ -148,7 +151,7 @@ public class CsvReader {
     public static Table read(CsvReadOptions options) throws IOException {
 
         byte[] bytes = options.reader() != null
-            ? CharStreams.toString(options.reader()).getBytes() : null;
+                ? CharStreams.toString(options.reader()).getBytes() : null;
 
         ColumnType[] types;
         if (options.columnTypes() != null) {
@@ -157,13 +160,13 @@ public class CsvReader {
             InputStream detectTypesStream = options.reader() != null
                     ? new ByteArrayInputStream(bytes)
                     : new FileInputStream(options.file());
-            types = detectColumnTypes(detectTypesStream, options.header(), options.separator(), options.sample()); 
+            types = detectColumnTypes(detectTypesStream, options.header(), options.separator(), options.sample());
         }
 
         // All other read methods end up here, make sure we don't have leading Unicode BOM
         InputStream stream = options.reader() != null
-            ? new ByteArrayInputStream(bytes)
-            : new FileInputStream(options.file());
+                ? new ByteArrayInputStream(bytes)
+                : new FileInputStream(options.file());
 
         UnicodeBOMInputStream ubis = new UnicodeBOMInputStream(stream);
         ubis.skipBOM();
@@ -182,7 +185,7 @@ public class CsvReader {
                     return table;
                 }
             } else {
-                headerNames =  makeColumnNames(types);
+                headerNames = makeColumnNames(types);
             }
 
             List<String> headerRow = Lists.newArrayList(headerNames);
@@ -243,18 +246,18 @@ public class CsvReader {
      * @param types           An array of the types of columns in the file, in the order they appear
      * @param header          Is the first row in the file a header?
      * @param columnSeparator the delimiter
-     * @param file        The fully specified file name. It is used to provide a default name for the table
+     * @param file            The fully specified file name. It is used to provide a default name for the table
      * @return A Relation containing the data in the csv file.
      * @throws IOException if file cannot be read
      */
     public static Table headerOnly(ColumnType types[], boolean header, char columnSeparator, File file)
             throws IOException {
 
-        FileInputStream fis = new FileInputStream(file);       
+        FileInputStream fis = new FileInputStream(file);
         // make sure we don't have leading Unicode BOM
         UnicodeBOMInputStream ubis = new UnicodeBOMInputStream(fis);
         ubis.skipBOM();
-        
+
         Reader reader = new InputStreamReader(ubis);
         BufferedReader streamReader = new BufferedReader(reader);
 

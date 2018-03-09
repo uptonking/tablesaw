@@ -17,6 +17,9 @@ package tech.tablesaw.aggregate;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.table.ViewGroup;
 
+/**
+ * 摘要信息统计函数
+ */
 public class SummaryFunction {
 
     private final Table original;

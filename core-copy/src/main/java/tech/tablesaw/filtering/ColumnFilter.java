@@ -16,6 +16,9 @@ package tech.tablesaw.filtering;
 
 import tech.tablesaw.columns.ColumnReference;
 
+/**
+ * 列的过滤器 抽象类
+ */
 public abstract class ColumnFilter extends Filter {
 
     final ColumnReference columnReference;

@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 表格的临时视图
+ * <p>
  * A TemporaryView is a facade around a Relation that acts as a filtering.
  * Requests for data are forwarded to the underlying table.
  * <p>

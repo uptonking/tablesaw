@@ -46,6 +46,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Long 列
+ * <p>
  * A column that contains signed 8 byte integer values
  */
 public class LongColumn extends AbstractColumn implements LongMapUtils, NumericColumn {
@@ -71,7 +73,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     };
 
     public LongColumn(String name) {
-      this(name, new LongArrayList(DEFAULT_ARRAY_SIZE));
+        this(name, new LongArrayList(DEFAULT_ARRAY_SIZE));
     }
 
     public LongColumn(String name, int initialSize) {
@@ -79,7 +81,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     }
 
     public LongColumn(String name, long[] arr) {
-      this(name, new LongArrayList(arr));
+        this(name, new LongArrayList(arr));
     }
 
     private LongColumn(String name, LongArrayList data) {
@@ -93,7 +95,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     }
 
     protected static boolean isMissing(long value) {
-      return value == MISSING_VALUE;
+        return value == MISSING_VALUE;
     }
 
     /**
@@ -133,7 +135,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     /**
      * Conditionally update this column, replacing current values with newValue for all rows where the current value
      * matches the selection criteria
-     *
+     * <p>
      * Example:
      * myColumn.set(4_000_000_000, myColumn.isMissing()); // no more missing values
      */
@@ -164,7 +166,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     }
 
     public Selection isNotEqualTo(long i) {
-      return select(isNotEqualTo, i);
+        return select(isNotEqualTo, i);
     }
 
     public Selection isEqualTo(LongColumn f) {
@@ -252,9 +254,9 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
     public String getString(int row) {
         long value = data.getLong(row);
         if (value == MISSING_VALUE) {
-          return null;
-      }
-      return String.valueOf(value);
+            return null;
+        }
+        return String.valueOf(value);
     }
 
     @Override
@@ -700,7 +702,7 @@ public class LongColumn extends AbstractColumn implements LongMapUtils, NumericC
         DoubleColumn newColumn = new DoubleColumn(name() + "[pctChange]", size());
         newColumn.append(DoubleColumn.MISSING_VALUE);
         for (int i = 1; i < size(); i++) {
-            newColumn.append((double) get(i) / get(i-1) - 1);
+            newColumn.append((double) get(i) / get(i - 1) - 1);
         }
         return newColumn;
     }

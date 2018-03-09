@@ -18,6 +18,9 @@ package tech.tablesaw.api;
 import tech.tablesaw.columns.Column;
 
 /**
+ * 列类型 枚举类 11类
+ * 各类都设置了默认缺失值
+ * <p>
  * Defines the type of data held by a {@link Column}
  */
 public enum ColumnType {

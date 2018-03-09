@@ -23,7 +23,9 @@ import tech.tablesaw.api.ShortColumn;
 import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.columns.TimeColumnUtils;
 import tech.tablesaw.columns.packeddata.PackedLocalTime;
-
+/**
+ * 时间 类型的map函数 接口
+ */
 public interface TimeMapUtils extends TimeColumnUtils {
 
     default LongColumn differenceInMilliseconds(TimeColumn column2) {

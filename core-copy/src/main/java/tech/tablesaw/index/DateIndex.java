@@ -21,6 +21,9 @@ import tech.tablesaw.columns.packeddata.PackedLocalDate;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 日期索引
+ * 针对4个字节的int和date类型的列
+ * <p>
  * An index for four-byte integer and Date columns
  */
 public class DateIndex {

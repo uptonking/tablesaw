@@ -30,6 +30,8 @@ import tech.tablesaw.api.TimeColumn;
 import tech.tablesaw.columns.Column;
 
 /**
+ * 列持久化时使用的元数据
+ * <p>
  * Data about a specific column used in it's persistence
  */
 public class ColumnMetadata {
@@ -103,32 +105,32 @@ public class ColumnMetadata {
     public int getSize() {
         return size;
     }
-    
+
     public Column createColumn() {
-      switch (getType()) {
-        case FLOAT:
-          return new FloatColumn(this);
-        case DOUBLE:
-          return new DoubleColumn(this);
-        case INTEGER:
-          return new IntColumn(this);
-        case BOOLEAN:
-          return new BooleanColumn(this);
-        case LOCAL_DATE:
-          return new DateColumn(this);
-        case LOCAL_TIME:
-          return new TimeColumn(this);
-        case LOCAL_DATE_TIME:
-          return new DateTimeColumn(this);
-        case CATEGORY:
-          return new CategoryColumn(this);
-        case SHORT_INT:
-          return new ShortColumn(this);
-        case LONG_INT:
-          return new LongColumn(this);
-        default:
-            throw new IllegalStateException("Unhandled column type writing columns");
-      }
+        switch (getType()) {
+            case FLOAT:
+                return new FloatColumn(this);
+            case DOUBLE:
+                return new DoubleColumn(this);
+            case INTEGER:
+                return new IntColumn(this);
+            case BOOLEAN:
+                return new BooleanColumn(this);
+            case LOCAL_DATE:
+                return new DateColumn(this);
+            case LOCAL_TIME:
+                return new TimeColumn(this);
+            case LOCAL_DATE_TIME:
+                return new DateTimeColumn(this);
+            case CATEGORY:
+                return new CategoryColumn(this);
+            case SHORT_INT:
+                return new ShortColumn(this);
+            case LONG_INT:
+                return new LongColumn(this);
+            default:
+                throw new IllegalStateException("Unhandled column type writing columns");
+        }
     }
-    
+
 }

@@ -24,6 +24,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串是否能被所给的正则表达式匹配
+ * <p>
  * A filtering that selects cells in which all text matches the given regex
  */
 @Immutable

@@ -24,6 +24,9 @@ import tech.tablesaw.util.BitmapBackedSelection;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 针对8字节long型的列的索引
+ * 同时也支持基于long的其他类型的列，如datetime
+ * <p>
  * An index for eight-byte long and long backed columns (datetime)
  */
 public class LongIndex {
@@ -81,7 +84,7 @@ public class LongIndex {
         Selection selection = new BitmapBackedSelection();
         IntArrayList list = index.get(value);
         if (list != null) {
-          addAllToSelection(list, selection);
+            addAllToSelection(list, selection);
         }
         return selection;
     }

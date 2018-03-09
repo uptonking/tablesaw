@@ -25,6 +25,8 @@ import tech.tablesaw.filtering.ColumnFilter;
 import tech.tablesaw.util.Selection;
 
 /**
+ * 判断字符串的长度是否等于length
+ * <p>
  * A filtering that selects cells whose length equals the given length
  */
 @Immutable

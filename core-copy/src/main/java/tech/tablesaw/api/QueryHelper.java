@@ -26,6 +26,9 @@ import tech.tablesaw.filtering.IsFalse;
 import tech.tablesaw.filtering.IsTrue;
 
 /**
+ * 查询工具类
+ * 全是静态方法
+ * <p>
  * A static utility class designed to take some of the work, and verbosity, out of making queries.
  * <p>
  * It is intended to be imported statically in any class that will run queries as it makes them easier to write - and

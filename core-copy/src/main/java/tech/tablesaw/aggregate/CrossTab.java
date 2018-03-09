@@ -27,6 +27,9 @@ import tech.tablesaw.columns.Column;
 import java.time.LocalDate;
 
 /**
+ * 交叉表 工具类
+ * 全是静态方法
+ * <p>
  * Utilities for creating frequency and proportion cross tabs
  */
 public final class CrossTab {

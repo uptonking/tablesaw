@@ -44,6 +44,8 @@ import static tech.tablesaw.columns.BooleanColumnUtils.isMissing;
 import static tech.tablesaw.columns.BooleanColumnUtils.isNotMissing;
 
 /**
+ * Boolean类型 列
+ * <p>
  * A column in a base table that contains float values
  */
 public class BooleanColumn extends AbstractColumn implements BooleanMapUtils, IntConvertibleColumn {
