@@ -25,7 +25,7 @@ import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 /**
- * tablesaw的测试数据源名称 枚举类
+ * tablesaw的测试数据集名称 列信息 枚举类
  * <p>
  * This class setup tablesaw Table from test data sources.
  * It purpose is to make easy for tests or example code get data to work with.

@@ -108,6 +108,9 @@ public class SortTest {
     }
 
     /**
+     * 表格数据比较
+     * 逐行 逐列 比较单元格内容
+     * <p>
      * Make sure each row in each table match
      *
      * @param sortedTable the table that was sorted with tablesaw
@@ -115,12 +118,18 @@ public class SortTest {
      */
     private void compareTables(Table sortedTable, Table compareWith) {
         assertEquals("both tables have the same number of rows", sortedTable.rowCount(), compareWith.rowCount());
+
         int maxRows = sortedTable.rowCount();
         int numberOfColumns = sortedTable.columnCount();
+
         for (int rowIndex = 0; rowIndex < maxRows; rowIndex++) {
+
             for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
-                assertEquals("cells[" + rowIndex + ", " + columnIndex + "]  match",
-                        sortedTable.get(rowIndex, columnIndex), compareWith.get(rowIndex, columnIndex));
+
+                assertEquals(
+                        "cells[" + rowIndex + ", " + columnIndex + "]  match",
+                        sortedTable.get(rowIndex, columnIndex), compareWith.get(rowIndex, columnIndex)
+                );
             }
         }
     }
