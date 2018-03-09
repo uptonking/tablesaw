@@ -4,7 +4,6 @@
 
 apply to all types
 
-    ```
     equalTo(Comparable c)
     greaterThan(Comparable c)
     greaterThanOrEqualTo(Comparable c)
@@ -73,7 +72,6 @@ apply to all types
     AM()
     PM()
 
-    ```
 
 ## DateTime Filter
 
