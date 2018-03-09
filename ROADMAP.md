@@ -3,9 +3,10 @@
  > the ease of Pandas and the performance of C
  
 ## Target
-    - a platform for data science in Java
-    - learning source code of Tablesaw
-    - pr to issues
+
+- a platform for data science in Java
+- learning source code of Tablesaw
+- pr to issues
     
 ## Future
 
