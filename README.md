@@ -1,89 +1,126 @@
-Tablesaw
-=======
+# Tablesaw Overview
 
-[![Apache 2.0](https://img.shields.io/github/license/nebula-plugins/nebula-project-plugin.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Build Status](https://travis-ci.org/jtablesaw/tablesaw.svg?branch=master)](https://travis-ci.org/jtablesaw/tablesaw)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5029f48d00c24f1ea378b090210cf7da)](https://www.codacy.com/app/jtablesaw/tablesaw?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jtablesaw/tablesaw&amp;utm_campaign=Badge_Grade)
+    > 为Java数据处理提供极致易用性的平台    
 
-### Overview
+[README in English](https://github.com/uptonking/tablesaw/tree/master/README-en.md)   
 
-__Tablesaw__ is the shortest path to data science in Java. It includes a dataframe, an embedded column-store, and hundreds of methods to transform, summarize, or filter data similar to the Pandas dataframe and R data frame. If you work with data in Java, it will probably save you time and effort.
+## Features
 
-Tablesaw also supports descriptive statistics, data visualization, and machine learning. And it scales: You can munge a 1/2 billion rows on a laptop and over 2 billion records on a server. 
+- 丰富的数据处理方法
+    - 支持的数据源包括csv，本地文件，rdbms，http文件
+    - 文件合并
+    - 添加或删除列
+    - 过滤、排序、分组
+    - map/reduce
+    - 列式存储格式
 
-There are other, more elaborate platforms for data science in Java. They're designed to work with vast amounts of data, and  require a huge stack and a vast amount of effort.
+- 常用统计方法
+    - 计算常用的描述性统计量：求和、求均、最值、中位数、求积(product)、方差、百分位数、几何平均数、偏度、峰度
+    - TopN
+    
+- 机器学习方法
+    - 分类：kNN、决策树、随机森林
+    - 回归：最小二乘
+    - 聚类：kMeans、gMeans
+    - 关联分析：频繁项集
+    - 特征工程：PCA
 
-You can include tablesaw-core, which is the dataframe library itself, with: 
+- 数据可视化
+    - 饼、线、柱
+    - 散点图
+    - 直方图
+    - 盒图
+    - 帕累托图
 
-    <dependency>
-        <groupId>tech.tablesaw</groupId>
-        <artifactId>tablesaw-core</artifactId>
-        <version>0.11.6</version>
-    </dependency>
+## Tablesaw设计
 
-You may also add dependencies for `tablesaw-plot` to use the plotting capability and `tablesaw-smile` to use the [Smile](https://github.com/haifengl/smile) machine learning integration.
+- 为计算提供极致的易用性而设计，因此抛弃大多数情况下都用不到的分布式架构
 
-### Documentation and support:
+- dataframe  
+    dataframe是基于内存的类似表格的数据结构，每列数据类型相同，每行可以包含不同的类型
 
-* Please see our documentation page: https://jtablesaw.github.io/tablesaw/ 
-* We also recommend trying Tablesaw inside [Jupyter notebooks](http://arogozhnikov.github.io/2016/09/10/jupyter-features.html), which lets you experiment with Tablesaw in a more interactive manner. Get started by [installing BeakerX](http://beakerx.com/documentation) and trying [the sample Tablesaw notebook](https://github.com/twosigma/beakerx/blob/master/doc/groovy/Tablesaw.ipynb)
+- 专用的列式存储格式.saw  
+    tablesaw开发了一种基于压缩和劣势存储的自定义数据格式.saw，比csv、文本文件更省空间，更易存储、传输
 
-### Tablesaw features: 
+- Table数据类型  
+    - 使用最广泛的数据类型
+    - Table的多数方法会返回另一个Table
+    - 获取table元数据
+        - table.name()
+        - table.columnNames() 
+        - table.structure()
+        - table.shape() 
+        - rowCount(), columnCount()
+    - 列的索引从0开始
+    - 对于需要反复使用的大规模数据Table，建议存储为.saw格式
+    
+- Column
+    - 列支持的数据类型
+        - Category (Strings from a finite set)
+        - Integer (4 byte int)
+        - LongInt (8 byte int)
+        - ShortInt (2 byte int)
+        - Float (4 byte floating point)
+        - Double (8 byte floating point)
+        - Boolean
+        - Local Date
+        - Local DateTime
+        - Local Time
+    - 所有的列都支持通用的方法
+        - size()                           // returns the number of elements
+        - isEmpty()                        // returns true if column has no data; false otherwise
+        - first() and last()               // returns the first and last elements, respectively
+        - first(n) and last(n)             // returns the first and last n elements
+        - max() and min()                  // returns the largest and smallest elements
+        - top(n) and bottom(n)             // returns the n largest and smallest elements
+        - name()                           // returns the name of the column
+        - type()                           // returns the ColumnType, e.g. LOCAL_DATE
+        - print()                          // returns a String representation of the column
+        - copy()
+        - emptyCopy()
+        - unique()
+        - countUnique()
+        - asSet()
+        - summary()
+        - sortAscending()
+        - sortDescending()
+        - append(Column)                         // Appends the data in other column to this one
+    
+- 导入
+    - 导入数据时可以自动猜测数据类型CsvReader.printColumnTypes("data/a.csv", true, ','));
+    - 可以将列数据类型设置为SKIP来跳过导入
+    - 从http、rdbms加载远程数据的方法Table.read().csv(InputStream stream, String tableName)
 
-#### Data processing & transformation
-* Import data from RDBMS and CSV files, local or remote (http, S3, etc.)
-* Combine files
-* Add and remove columns
-* Sort, Group, Filter 
-* Map/Reduce operations
-* Store tables in a fast, compressed columnar storage format
+- 过滤器
+    - 主要使用方式：table.selectWhere(aFilter); table.rejectWhere(aFilter);
+    - ColumnReference指向Table中的一列
+    - 内置丰富的过滤器
+    - 支持自定义过滤器public abstract RoaringBitmap apply(Table relation);
 
-#### Statistics and Machine Learning
-* Descriptive stats: mean, min, max, median, sum, product, standard deviation, variance, percentiles, geometric mean, skewness, kurtosis, etc.
-* Regression: Least Squares
-* Classification: Logistic Regression, Linear Discriminant Analysis, Decision Trees, k-Nearest Neighbors, Random Forests
-* Clustering: k-Means, x-Means, g-Means
-* Association: Frequent Item Sets, Association Rule Mining
-* Feature engineering: Principal Components Analysis
+- 排序
+    - 主要使用方式 table.sortOn("-recipe","col1");
+    - 支持自定义排序
 
-#### Visualization
-* Scatter plots
-* Line plots
-* Vertical and Horizontal Bar charts
-* Histograms 
-* Box plots
-* Quantile Plots
-* Pareto Charts
+- Map函数
+    - 应用到一列或多列，产生一个新列
+    - Unary应用到1列 columnA.substring(startingPosition);
+    - Binary应用到2列 columnB.add(columnC);
+    - N-ary应用到N列
+    - 生成的新列默认不添加到原表
+    
+- Reduce函数
+    - 单分组  table.average("Injuries").by("Scale");
+    - 多分组 table.sum("Fatalities").by("State", "Scale");
 
-Here's an example where we use [XChart](https://github.com/timmolter/XChart) to map the locations of tornadoes: 
-![Alt text](https://jtablesaw.files.wordpress.com/2016/07/tornados3.png?w=809)
 
-You can see examples and read more about plotting in Tablesaw here: https://jtablesaw.wordpress.com/2016/07/30/new-plot-types-in-tablesaw/.
+## 性能测试
 
-### Current performance:
-You can load a 500,000,000 row, 4 column csv file (35GB on disk) entirely into about 10 GB of memory. If it's in Tablesaw's .saw format, you can load it in 22 seconds. You can query that table in 1-2 ms: fast enough to use as a cache for a Web app.
+  - 能够加载5亿行、4列的csv文件(35G)到10G的内存中进行计算
+  - 如果使用tablesaw自定义的.saw文件格式，加载只需22秒
 
-BTW, those numbers were achieved on a laptop.
+## Introducing Tablesaw
+    
+    >What I wanted for Tablesaw was the ease of Pandas and the performance of C. The biggest obstacle was memory. Primitives are far lighter than their equivalent objects, but they’re hard to use because many libraries auto-box them. 
 
-### Easy to Use is Easy to Say
-The goal in this example is to identify the production shifts with the worst performance. These few lines demonstrate __data import__, column-wise operations (__differenceInSeconds()__), filters (__isInQ2()__) grouping and aggegating (__median()__ and __.by()__), and (__top(n)__) calculations. 
-
-```java
-Table ops = Table.read().csv("data/operations.csv");                             // load data
-DateTimeColumn start = ops.dateColumn("Date").atTime(ops.timeColumn("Start"));
-DateTimeColumn end = ops.dateColumn("Date").atTime(ops.timeColumn("End");
-LongColumn duration = start.differenceInSeconds(end);                            // calc duration
-duration.setName("Duration");
-ops.addColumn(duration);
-
-Table filtered = ops.selectWhere(                                                // filter
-    allOf(
-        column("date").isInQ2(),
-        column("SKU").startsWith("429"),
-        column("Operation").isEqualTo("Assembly")));
-   
-Table summary = filtered.median("Duration").by("Facility", "Shift");             // group medians
-FloatArrayList tops = summary.floatColumn("Median").top(5);                      // get "slowest"
-```
-
-If you see something that can be improved, please let us know.
+    >Tablesaw avoids using non-primitives for data, and when that’s not possible (with Strings, or dates, for example), it uses type-specific encoding schemes to minimize the footprint. Even primitives use type-specific compression: boolean columns, for example, are compressed bitmaps that use 1/8th the storage of primitive booleans, or about 1/32 the storage of Boolean objects. We can do this, because the data is stored in columns, just as it is in advanced OLAP data-stores like Redshift.
+  
