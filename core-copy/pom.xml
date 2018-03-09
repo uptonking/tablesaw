@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>tablesaw-core-copy</artifactId>
-    <description>tablesaw-core 注释学习</description>
+    <description>tablesaw-core 注释学习，主要包括dataframe</description>
 
     <packaging>jar</packaging>
 
