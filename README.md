@@ -2,8 +2,8 @@
 
     > 为Java数据处理提供极致易用性的平台    
 
-[README in English](https://github.com/uptonking/tablesaw/tree/master/README-en.md), 
-[Quickstart](https://jtablesaw.wordpress.com/an-introduction/), 
+[README in English](https://github.com/uptonking/tablesaw/tree/master/README-en.md)   &middot;
+[Quickstart](https://jtablesaw.wordpress.com/an-introduction/) &middot;
 [User Guide](https://jtablesaw.github.io/tablesaw/userguide/toc)  
 
 ## Features
