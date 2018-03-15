@@ -35,6 +35,7 @@ import tech.tablesaw.columns.Column;
  * <p>
  * TODO(lwhite): Do something with the missing indicator param in write() method
  * TODO(lwhite): Add a missing indicator to the column write method, plus a method defining a default missing indicator
+ * todo 写入csv时自定义header名称
  */
 @Immutable
 final public class CsvWriter {
@@ -102,7 +103,9 @@ final public class CsvWriter {
      */
     public static void write(String fileName, Column column) throws IOException {
         try (CSVWriter writer = new CSVWriter(new FileWriter(fileName))) {
+
             String[] header = {column.name()};
+
             writer.writeNext(header, false);
 
             for (int r = 0; r < column.size(); r++) {

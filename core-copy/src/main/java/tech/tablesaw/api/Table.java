@@ -935,6 +935,12 @@ public class Table extends Relation implements IntIterable {
         }
     }
 
+    /**
+     * table数据默认保存为.saw格式
+     *
+     * @param folder 保存地址文件夹
+     * @return 文件名
+     */
     public String save(String folder) {
         String storageFolder = "";
         try {

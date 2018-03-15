@@ -87,17 +87,24 @@ public class DictionaryMap {
         return categories().size();
     }
 
+    /**
+     * 获取字符串set
+     */
     public Set<String> categories() {
         return valueToKey.keySet();
     }
 
     /**
+     * 获取字符串数组
      * Returns the strings in the dictionary as an array in order of the numeric key
      */
     public String[] categoryArray() {
         return keyToValue.values().toArray(new String[size()]);
     }
 
+    /**
+     * 获取数字编码
+     */
     public IntCollection values() {
         return valueToKey.values();
     }

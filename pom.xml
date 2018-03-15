@@ -49,6 +49,8 @@
     <module>smile</module>
     <module>beakerx</module>
     <module>aggregate</module>
+    <module>hello-tablesaw</module>
+      <module>ext-etl</module>
   </modules>
 
   <profiles>

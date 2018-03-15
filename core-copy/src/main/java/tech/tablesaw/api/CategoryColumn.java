@@ -58,8 +58,7 @@ import java.util.Set;
  * Because the MISSING_VALUE for this column type is an empty string,
  * there is little or no need for special handling of missing values in this class's methods.
  */
-public class CategoryColumn extends AbstractColumn
-        implements CategoryFilters, CategoryColumnUtils, IntConvertibleColumn, Iterable<String> {
+public class CategoryColumn extends AbstractColumn implements CategoryFilters, CategoryColumnUtils, IntConvertibleColumn, Iterable<String> {
 
     public static final String MISSING_VALUE = (String) ColumnType.CATEGORY.getMissingValue();
     private static final int BYTE_SIZE = 4;
@@ -70,7 +69,11 @@ public class CategoryColumn extends AbstractColumn
     // holds a key for each row in the table. the key can be used to lookup the backing string value
     private IntArrayList values;
 
-    // a bidirectional map of keys to backing string values.
+    /**
+     * 字符串值 <--> 整型编码 的双向字典
+     * key是整数，value是字符串
+     * a bidirectional map of keys to backing string values.
+     */
     private DictionaryMap lookupTable = new DictionaryMap();
 
     public final IntComparator rowComparator = new IntComparator() {
@@ -475,6 +478,8 @@ public class CategoryColumn extends AbstractColumn
     }
 
     /**
+     * 返回该列中所有唯一值的编码
+     * 新列的内容是整数，作为字符串存储在列中
      * Returns a new Column containing all the unique values in this column
      *
      * @return a column with unique values.
@@ -484,6 +489,15 @@ public class CategoryColumn extends AbstractColumn
         List<String> strings = new ArrayList<>(lookupTable.categories());
         return new CategoryColumn(name() + " Unique values", strings);
     }
+
+    // todo 新增获取唯一值字符串的方法
+    public CategoryColumn uniqueVaules() {
+        List<String> strings = new ArrayList<>(lookupTable.categories());
+        return new CategoryColumn(name() + " Unique values", strings);
+    }
+
+
+
 
     /**
      * Returns the integers that back this column.
