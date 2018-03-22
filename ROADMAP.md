@@ -17,6 +17,8 @@
 
 ## todo
 
+- [ ] 合并easyexcel和jexcel
+- [ ] 开发转换器 list2table map2table
 - [ ] table.print()格式美化
 - [*] 计算一列的不同值 
 tablesaw已经实现 `table.sum("column").by("column2")`  
