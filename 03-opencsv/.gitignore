@@ -1,0 +1,9 @@
+myfile.csv
+target/
+build
+bin
+deploy
+.idea
+.DS_Store
+*.iml
+nbactions.xml
